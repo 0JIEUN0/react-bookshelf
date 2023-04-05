@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterPage(props) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -26,8 +28,7 @@ function RegisterPage(props) {
     dispatch(registerUser(body))
       .then(response => {
         if (response.payload.success) {
-          // move page
-          alert('success');
+          navigate('/login');
         } else {
           alert('Failed to sign up.');
         }

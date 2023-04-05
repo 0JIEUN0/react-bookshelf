@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -20,7 +22,7 @@ function LoginPage() {
       .then(response => {
         console.log(response.payload)
         if (response.payload.loginSuccess) {
-          alert('success');
+          navigate('/');
         } else {
           alert('Fail: Please check your email or password.')
         }

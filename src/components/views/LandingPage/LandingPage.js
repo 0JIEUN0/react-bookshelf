@@ -1,11 +1,20 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
+  const navigate = useNavigate();
 
   const onClickHandler = () => {
     axios.get('/logout')
-      .then(response => console.log(response));
+      .then(response => {
+        console.log(response)
+        if (response.data.success) {
+          navigate('/login');
+        } else {
+          alert('Failed to Logout.')
+        }
+      });
   }
 
   return (
