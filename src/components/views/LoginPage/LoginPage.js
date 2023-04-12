@@ -21,7 +21,7 @@ function LoginPage() {
     dispatch(loginUser(body))
       .then(response => {
         console.log(response.payload)
-        if (response.payload.loginSuccess) {
+        if (response.payload.success) {
           navigate('/');
         } else {
           alert('Fail: Please check your email or password.')
