@@ -21,3 +21,50 @@
     color: #EF367C;
     background-color: #322c34;
 }
+
+.query {
+    padding: 20px;
+    min-width: 500px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: white;
+    font-size: 20px;
+    box-shadow:
+        0px 1px 0 #EF367C;
+}
+
+.query::placeholder {
+    color: #EF367C;
+}
+
+.queryBtn {
+    color: white;
+    background: #EF367C;
+    border: 0;
+    outline: 0;
+    padding: 10px;
+}
+
+.Book {
+    display: flex;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.BookInfo {
+    text-align: left;
+    margin: 10px;
+}
+
+.BookTitle {
+    flex: 1;
+    text-align: left;
+    font-size: 20px;
+    color: bisque;
+}
+
+.BookDetails {
+    color: aliceblue;
+    font-size: 15px;
+}
