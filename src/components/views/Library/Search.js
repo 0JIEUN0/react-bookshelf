@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import axios from 'axios';
-import {parseString} from 'xml2js'
+import { parseString } from 'xml2js'
 import './App.css';
 import Book from "./Book";
 import Bookshelf from "./Bookshelf";
@@ -53,28 +53,26 @@ function Search(props) {
 
     return (
         <div className="App">
-            <header className="App-Header">
-                {/* search books */}
-                <div className="inputQuery">
-                    <input className="query"
-                        type="text" placeholder="Enter the name of the book."
-                        value={query} onChange={(e) => { setQuery(e.target.value) }}
-                        onKeyPress={(e) => { if (e.key === "Enter") searchQuery() }}>
-                    </input>
-                    <button className="queryBtn" onClick={searchQuery}>Search</button>
+            {/* search books */}
+            <div className="inputQuery">
+                <input className="query"
+                    type="text" placeholder="Enter the name of the book."
+                    value={query} onChange={(e) => { setQuery(e.target.value) }}
+                    onKeyPress={(e) => { if (e.key === "Enter") searchQuery() }}>
+                </input>
+                <button className="queryBtn" onClick={searchQuery}>Search</button>
 
-                    <div className="searchResult">
-                        {
-                            isLoading ?
-                                books.map(book =>
-                                    <Book key={bookId.current++}
-                                        bookInfo={book} onSaveBMemo={props.onSaveBMemo}>
-                                    </Book>)
-                                : message
-                        }
-                    </div>
+                <div className="searchResult">
+                    {
+                        isLoading ?
+                            books.map(book =>
+                                <Book key={bookId.current++}
+                                    bookInfo={book} onSaveBMemo={props.onSaveBMemo}>
+                                </Book>)
+                            : message
+                    }
                 </div>
-            </header>
+            </div>
         </div>
     )
 }

@@ -4,6 +4,15 @@
 }
 
 .App-Header {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.Library {
     background-color: #F8F5F1;
     display: flex;
     flex-direction: column;
@@ -101,4 +110,9 @@
     width: 200px;
     height: 300px;
     padding: 10px;
+}
+
+#logoutButton {
+    background: none;
+    border: none;
 }
