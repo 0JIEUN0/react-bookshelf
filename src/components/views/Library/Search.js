@@ -5,7 +5,7 @@ import './App.css';
 import Book from "./Book";
 import Bookshelf from "./Bookshelf";
 
-function SearchPage() {
+function Search(props) {
     const MAX = 5 // maximum size of each bookshelf
 
     const [query, setQuery] = useState("") // search query
@@ -14,32 +14,6 @@ function SearchPage() {
     const [message, setMessage] = useState("") // error message
 
     const bookId = useRef(0) // id of results
-
-    const [current, setCurrent] = useState("Basic") // name of current bookshelf
-    const [bookImgs, setBookImgs] = useState([{ id: current, imgs: [] }]) // images of bookshelves
-
-    // change bookshelf
-    const setBookshelf = (e) => {
-        setCurrent(e.target.value)
-
-        // init
-        if (bookImgs.find((src) => src.id === e.target.value) == undefined) {
-            let newData = { id: e.target.value, imgs: [] }
-            setBookImgs((imgs) => [...imgs, newData])
-        }
-    }
-
-    const setBookImgsCallBack = (img) => {
-        let oldData = bookImgs.find((src) => src.id == current)
-
-        // add books until MAX
-        if (oldData.imgs.length != MAX) {
-            let newData = { id: current, imgs: [...oldData.imgs, img] }
-            let tmpList = bookImgs.map((src) =>
-                current === src.id ? { ...src, ...newData } : src)
-            setBookImgs(tmpList);
-        }
-    }
 
     const searchQuery = async () => {
         // Naver API
@@ -80,15 +54,6 @@ function SearchPage() {
     return (
         <div className="App">
             <header className="App-Header">
-                <p>MY BOOKSHELF</p>
-                <select id="selectBookshelf" onChange={(e) => setBookshelf(e)}>
-                    <option value="Basic" selected="selected">Basic</option>
-                    <option value="Novel">Novel</option>
-                    <option value="Study">Study</option>
-                </select>
-
-                <Bookshelf imgSrcs={bookImgs.find((src) => src.id == current)}/>
-
                 {/* search books */}
                 <div className="inputQuery">
                     <input className="query"
@@ -105,7 +70,7 @@ function SearchPage() {
                             isLoading ?
                                 books.map(book =>
                                     <Book key={bookId.current++}
-                                        bookInfo={book} select={setBookImgsCallBack}>
+                                        bookInfo={book} onSaveBMemo={props.onSaveBMemo}>
                                     </Book>)
                                 : message
                         }
@@ -116,4 +81,4 @@ function SearchPage() {
     )
 }
 
-export default SearchPage;
+export default Search;
