@@ -3,14 +3,14 @@
 }
 
 .App-Header {
-    background-color: #282c34;
+    background-color: #F8F5F1;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: #B5592A;
 }
 
 #selectBookshelf {
@@ -18,8 +18,9 @@
     width: 200px;
     padding: 10px;
     font-size: 15px;
-    color: #EF367C;
-    background-color: #322c34;
+    color: #E9896A;
+    background-color: white;
+    border-radius: 3px 3px / 3px 3px;
 }
 
 .query {
@@ -28,19 +29,19 @@
     background: transparent;
     border: 0;
     outline: 0;
-    color: white;
+    color: #B5592A;
     font-size: 20px;
     box-shadow:
-        0px 1px 0 #EF367C;
+        0px 1px 0 #E9896A;
 }
 
 .query::placeholder {
-    color: #EF367C;
+    color: #B5592A;
 }
 
 .queryBtn {
     color: white;
-    background: #EF367C;
+    background: #E9896A;
     border: 0;
     outline: 0;
     padding: 10px;
@@ -61,10 +62,30 @@
     flex: 1;
     text-align: left;
     font-size: 20px;
-    color: bisque;
+    color: #596E79;
+    font-weight: bold;
 }
 
 .BookDetails {
-    color: aliceblue;
+    color: #233142;
     font-size: 15px;
+}
+
+.Bookshelf {
+    align-items: center;
+}
+
+#BookImg {
+    margin: 10px;
+    width: 100px;
+    height: 150px;
+    background: wheat;
+    padding: 10px;
+    border-radius: 3px 3px / 3px 3px;
+}
+
+#BookImgResult {
+    width: 200px;
+    height: 300px;
+    padding: 10px;
 }

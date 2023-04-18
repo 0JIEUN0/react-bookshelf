@@ -3,6 +3,7 @@ import axios from 'axios';
 import {parseString} from 'xml2js'
 import './App.css';
 import Book from "./Book";
+import Bookshelf from "./Bookshelf";
 
 function SearchPage() {
     const MAX = 5 // maximum size of each bookshelf
@@ -85,6 +86,8 @@ function SearchPage() {
                     <option value="Novel">Novel</option>
                     <option value="Study">Study</option>
                 </select>
+
+                <Bookshelf imgSrcs={bookImgs.find((src) => src.id == current)}/>
 
                 {/* search books */}
                 <div className="inputQuery">
