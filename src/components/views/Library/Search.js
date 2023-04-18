@@ -63,8 +63,6 @@ function Search(props) {
                     </input>
                     <button className="queryBtn" onClick={searchQuery}>Search</button>
 
-                    <h5>RESULTS</h5>
-                    <hr></hr>
                     <div className="searchResult">
                         {
                             isLoading ?

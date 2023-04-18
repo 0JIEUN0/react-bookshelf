@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './App.css';
 import Search from "./Search";
+import BookMemo from "./BookMemo";
 
 function Bookshelf(props) {
     const MAX = 5
@@ -8,7 +9,7 @@ function Bookshelf(props) {
     const [booklist, setBooklist] = useState([])
 
     const onSaveBMemo = (bookInfo) => {
-        if (booklist.indexOf(bookInfo.isbn) === -1) {
+        if (booklist.findIndex((src) => src.isbn == bookInfo.isbn) === -1) {
             // don't add duplicated book
             setBooklist([...booklist, bookInfo]);
         }
@@ -19,18 +20,31 @@ function Bookshelf(props) {
     }
 
     return (
-        <div className="Bookshelf">
-            {
-                booklist.map((bookInfo) => <img id="BookImg" src={bookInfo.image} />)
-            }
-            {
-                (function () {
-                    if (booklist.length < 5) {
-                        return <img id="BookImg" />
-                    }
+        <div>
+            <div className="Bookshelf">
+                {
+                    booklist.map((bookInfo) =>
+                        <BookMemo
+                            key={bookInfo.isbn}
+                            bookInfo={bookInfo}
+                            onRemoveBMemo={onRemoveBMemo}
+                        />
+                    )
                 }
-                )()
-            }
+                {
+                    (function () {
+                        if (booklist.length < MAX) {
+                            const dummy = [];
+                            for (var i = booklist.length; i < MAX; i++) {
+                                dummy.push(<img id="BookImg" />)
+                            }
+                            return dummy;
+                        }
+                    }
+                    )()
+                }
+            </div>
+            
             <Search onSaveBMemo={onSaveBMemo} />
         </div>
     )

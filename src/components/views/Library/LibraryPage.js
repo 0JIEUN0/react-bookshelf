@@ -16,7 +16,7 @@ function LibraryPage() {
                     <option value="Study">Study</option>
                 </select>
 
-                <Bookshelf bsname={currBookshelf} />
+                <Bookshelf key={currBookshelf} />
                 {/* TODO: <Search /> */}
 
             </header>
