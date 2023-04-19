@@ -36,7 +36,7 @@ function Bookshelf(props) {
                         if (booklist.length < MAX) {
                             const dummy = [];
                             for (var i = booklist.length; i < MAX; i++) {
-                                dummy.push(<img id="BookImg" />)
+                                dummy.push(<div id="BookImg" />)
                             }
                             return dummy;
                         }

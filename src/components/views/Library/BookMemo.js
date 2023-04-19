@@ -17,7 +17,7 @@ export default function BookMemo(props) {
     };
 
     return (
-        <div className="BookMemo">
+        <div className="Shelf">
             <img id="BookImg" src={image} onClick={openModal} />
             <button className="RemoveButton" onClick={() => props.onRemoveBMemo(isbn)}>
                 <img src="/image/remove.png" width="25px"></img>
