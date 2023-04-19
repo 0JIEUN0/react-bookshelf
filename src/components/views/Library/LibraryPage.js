@@ -25,16 +25,18 @@ function LibraryPage() {
     return (
         <div className="App">
             <header className="App-Header">
-                <p>MY BOOKSHELF</p>
+                <img src="/image/handshelf.png" width="150px" />
                 <button id="logoutButton" onClick={onLogoutHandler}>LOGOUT</button>
             </header>
 
             <div className="Library">
+                {/*
                 <select id="selectBookshelf" onChange={(e) => setCurrBookshelf(e.target.value)}>
                     <option value="Basic" selected="selected">Basic</option>
                     <option value="Novel">Novel</option>
                     <option value="Study">Study</option>
                 </select>
+                */}
 
                 <Bookshelf key={currBookshelf} />
                 {/* TODO: <Search /> */}
