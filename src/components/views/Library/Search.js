@@ -60,18 +60,19 @@ function Search(props) {
                     value={query} onChange={(e) => { setQuery(e.target.value) }}
                     onKeyPress={(e) => { if (e.key === "Enter") searchQuery() }}>
                 </input>
-                <button className="queryBtn" onClick={searchQuery}>Search</button>
-
-                <div className="searchResult">
-                    {
-                        isLoading ?
-                            books.map(book =>
-                                <Book key={bookId.current++}
-                                    bookInfo={book} onSaveBMemo={props.onSaveBMemo}>
-                                </Book>)
-                            : message
-                    }
-                </div>
+                <button className="queryBtn" onClick={searchQuery}>
+                    <img src="/image/search.png" width="40px" />
+                </button>
+            </div>
+            <div className="searchResult">
+                {
+                    isLoading ?
+                        books.map(book =>
+                            <Book key={bookId.current++}
+                                bookInfo={book} onSaveBMemo={props.onSaveBMemo}>
+                            </Book>)
+                        : message
+                }
             </div>
         </div>
     )

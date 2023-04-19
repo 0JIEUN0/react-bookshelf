@@ -48,12 +48,18 @@
     color: #B5592A;
 }
 
+.inputQuery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .queryBtn {
-    color: white;
-    background: #E9896A;
+    color: #E9896A;
+    background: none;
     border: 0;
     outline: 0;
-    padding: 10px;
+    filter: invert(60%) sepia(43%) saturate(568%) hue-rotate(327deg) brightness(96%) contrast(89%);
 }
 
 .Book {
