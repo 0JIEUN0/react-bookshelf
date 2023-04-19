@@ -2,6 +2,7 @@
     text-align: center;
     min-height: 100vh;
     background-color: whitesmoke;
+    font-family: "Roboto";
 }
 
 .App-Header {
@@ -124,6 +125,8 @@
 #logoutButton {
     background: none;
     border: none;
+    font-family: "Arvo-Bold";
+    font-size: large;
 }
 
 .modal {

@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "RobotoMono";
+  src: url("../public/font/RobotoMono-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Arvo-Bold";
+  src: url("../public/font/Arvo-Bold.ttf");
+}
