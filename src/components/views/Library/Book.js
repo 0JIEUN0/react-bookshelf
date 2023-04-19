@@ -14,7 +14,10 @@ function Book(props) {
 
     return (
         <div className="Book">
-            <img id="BookImgResult" src={props.bookInfo.image} onClick={onBookSeleted} />
+            <div className="BookResultWrap">
+                <img id="BookResultImg" src={props.bookInfo.image} />
+                <a href='#' onClick={onBookSeleted}><img src="/image/plus.png" width="40px"/></a>
+            </div>
             <div className="BookInfo">
                 <span className="BookTitle">{title}</span><br></br>
                 <span className="BookDetails">
