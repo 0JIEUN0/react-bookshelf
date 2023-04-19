@@ -10,7 +10,7 @@ function LandingPage() {
       .then(response => {
         console.log(response)
         if (response.data.success) {
-          navigate('/login');
+          navigate('/');
         } else {
           alert('Failed to Logout.')
         }

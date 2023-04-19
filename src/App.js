@@ -14,17 +14,17 @@ import Auth from './hoc/auth';
 function App() {
 
   //const AuthLandingPage = Auth(LandingPage, null);
-  const AuthLibraryPage = Auth(LibraryPage, null);
+  const AuthLibraryPage = Auth(LibraryPage, true);
   const AuthLoginPage = Auth(LoginPage, false);
   const AuthRegisterPage = Auth(RegisterPage, false);
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/library",
       element: <AuthLibraryPage />
     },
     {
-      path: "/login",
+      path: "/",
       element: <AuthLoginPage />
     },
     {

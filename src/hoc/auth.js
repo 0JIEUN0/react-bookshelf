@@ -16,18 +16,21 @@ export default function (SpecificComponent, option, adminRoute = null) {
 
         useEffect(() => {
             dispatch(auth()).then(response => {
+                console.log(response)
                 if (!response.payload.isAuth) {
                     if (option) {
-                        navigate('/login');
+                        navigate('/');
                     }
                 } else {
                     if (adminRoute && !response.payload.isAdmin) {
-                        navigate('/');
+                        navigate('/library');
                     } else {
                         if (option === false)
-                            navigate('/');
+                            navigate('/library');
                     }
                 }
+            }).catch(error => { // authentication false
+                navigate('/');
             })
         }, [])
         

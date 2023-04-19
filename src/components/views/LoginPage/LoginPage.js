@@ -22,7 +22,7 @@ function LoginPage() {
       .then(response => {
         console.log(response.payload)
         if (response.payload.success) {
-          navigate('/');
+          navigate('/library');
         } else {
           alert('Fail: Please check your email or password.')
         }
