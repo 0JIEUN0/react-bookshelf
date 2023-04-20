@@ -120,8 +120,22 @@
     background-color: wheat;
     padding: 15px;
     border-radius: 5px 5px / 5px 5px;
+    border: 10px;
 }
 
+#BookImg:hover {    
+    background-color: #F5C569;
+}
+
+#BookImgEmpty {
+    margin: 10px;
+    width: 150px;
+    height: 210px;
+    background-color: wheat;
+    padding: 15px;
+    border-radius: 5px 5px / 5px 5px;
+    border: 10px;
+}
 
 .BookResultWrap {
     width: 150px;
@@ -158,6 +172,19 @@
 
 #BookAddBtn:hover {
     visibility: visible;
+}
+
+.memo {
+    width: 90%;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #E7E7E7;
+    border: none;
+    outline: none;
+    padding: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+
 }
 
 #logoutButton {

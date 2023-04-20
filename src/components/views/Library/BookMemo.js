@@ -4,7 +4,7 @@ import MemoModal from "./MemoModal";
 
 export default function BookMemo(props) {
     const { title, image, isbn } = props.bookInfo;
-    console.log(props.bookInfo)
+    const [memo, setMemo] = useState("");
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -23,7 +23,10 @@ export default function BookMemo(props) {
                 <img src="/image/remove.png" width="25px"></img>
             </button>
             <MemoModal open={modalOpen} close={closeModal} header={title}>
-                Write book report.
+                <textarea className="memo"
+                    placeholder="Why is this book memorable?"
+                    value={memo} onChange={(e) => { setMemo(e.target.value) }}>
+                </textarea>
             </MemoModal>
         </div>
     )
