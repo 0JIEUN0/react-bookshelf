@@ -6,25 +6,27 @@ import axios from "axios";
 
 function Bookshelf(props) {
     const MAX = 5
-    
+    const shelfId = props.shelf._id;
     const [booklist, setBooklist] = useState(props.shelf.books);
     
     const onSaveBMemo = (bookInfo, isbn) => {
         if (booklist.findIndex((src) => src.isbn == isbn) === -1) {
             // don't add duplicated book
             const reqData = {
-                shelfId: props.shelf._id,
+                shelfId: shelfId,
                 bookInfo: bookInfo,
             }
-            const response = axios.post('/api/book', reqData)
-                .then(response => response.data);
-            bookInfo.bookId = response.bookId;
-            setBooklist([...booklist, bookInfo]);
+            axios.post('/api/book', reqData)
+                .then(response => response.data)
+                .then(response => {
+                    bookInfo._id = response.bookId;
+                    setBooklist([...booklist, bookInfo]);
+                });
         }
     }
 
     const onRemoveBMemo = (bookId) => {
-        setBooklist(booklist.filter((book) => book.bookId !== bookId));
+        setBooklist(booklist.filter((book) => book._id !== bookId));
     }
 
     return (
@@ -33,9 +35,10 @@ function Bookshelf(props) {
                 {
                     booklist.map((bookInfo) =>
                         <BookMemo
-                            key={bookInfo.bookId}
+                            key={bookInfo._id}
                             bookInfo={bookInfo}
                             onRemoveBMemo={onRemoveBMemo}
+                            shelfId={shelfId}
                         />
                     )
                 }

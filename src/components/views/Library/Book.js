@@ -8,7 +8,7 @@ function Book(props) {
         props.onSaveBMemo({
             title: title,
             author: author,
-            image: props.bookInfo.image,
+            image: props.bookInfo.image[0],
         }, props.bookInfo.isbn);
     }
 
