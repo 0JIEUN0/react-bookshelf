@@ -8,7 +8,7 @@ function Bookshelf(props) {
     const MAX = 5
     const shelfId = props.shelf._id;
     const [booklist, setBooklist] = useState(props.shelf.books);
-    
+
     const onSaveBMemo = (bookInfo, isbn) => {
         if (booklist.findIndex((src) => src.isbn == isbn) === -1) {
             // don't add duplicated book
@@ -27,6 +27,7 @@ function Bookshelf(props) {
 
     const onRemoveBMemo = (bookId) => {
         setBooklist(booklist.filter((book) => book._id !== bookId));
+        axios.delete(`/api/book/${shelfId}/${bookId}`);
     }
 
     return (
@@ -55,7 +56,7 @@ function Bookshelf(props) {
                     )()
                 }
             </div>
-            
+
             <Search onSaveBMemo={onSaveBMemo} />
         </div>
     )
