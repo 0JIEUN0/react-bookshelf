@@ -5,7 +5,11 @@ function Book(props) {
     // use callback function from parent
     // to get a image of the book
     const onBookSeleted = () => {
-        props.onSaveBMemo(props.bookInfo)
+        props.onSaveBMemo({
+            title: title,
+            author: author,
+            image: props.bookInfo.image,
+        }, props.bookInfo.isbn);
     }
 
     // remove tag

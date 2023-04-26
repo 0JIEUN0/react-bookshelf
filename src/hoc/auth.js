@@ -30,7 +30,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
                     }
                 }
             }).catch(error => { // authentication false
-                navigate('/');
+                if (option) navigate('/');
             })
         }, [])
         

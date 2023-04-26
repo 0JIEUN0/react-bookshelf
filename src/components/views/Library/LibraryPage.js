@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import './App.css';
@@ -8,7 +8,13 @@ import Search from "./Search";
 function LibraryPage() {
     const navigate = useNavigate();
 
-    const [currBookshelf, setCurrBookshelf] = useState("Basic") // name of current bookshelf
+    const [shelves, setShelves] = useState([{_id: "", books: []}]) // list of bookshelf
+
+    useEffect(() => {
+        axios.get('/api/shelf')
+            .then((response) => response.data.shelves)
+            .then((shelves) => setShelves(shelves));
+    }, [])
 
     const onLogoutHandler = () => {
         axios.get('/api/user/logout')
@@ -38,7 +44,8 @@ function LibraryPage() {
                 </select>
                 */}
 
-                <Bookshelf key={currBookshelf} />
+                {/* TODO: multipule bookshelves */}
+                <Bookshelf key={shelves[0]._id} shelf={shelves[0]}/>
                 {/* TODO: <Search /> */}
             </div>
         </div>

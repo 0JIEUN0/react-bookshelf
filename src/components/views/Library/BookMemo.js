@@ -3,7 +3,7 @@ import './App.css';
 import MemoModal from "./MemoModal";
 
 export default function BookMemo(props) {
-    const { title, image, isbn } = props.bookInfo;
+    const { title, image, bookId } = props.bookInfo;
     const [memo, setMemo] = useState("");
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function BookMemo(props) {
     return (
         <div className="Shelf">
             <img id="BookImg" src={image} onClick={openModal} />
-            <button className="RemoveButton" onClick={() => props.onRemoveBMemo(isbn)}>
+            <button className="RemoveButton" onClick={() => props.onRemoveBMemo(bookId)}>
                 <img src="/image/remove.png" width="25px"></img>
             </button>
             <MemoModal open={modalOpen} close={closeModal} header={title}>
