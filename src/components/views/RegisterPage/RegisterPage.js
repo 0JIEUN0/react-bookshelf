@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
+import './RegisterPage.css';
 
 function RegisterPage(props) {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function RegisterPage(props) {
       email: email,
       password: password
     }
-    
+
     dispatch(registerUser(body))
       .then(response => {
         if (response.payload.success) {
@@ -36,28 +37,35 @@ function RegisterPage(props) {
   }
 
   return (
-    <div style={{
-      display: 'flex', justifyContent: 'center', alignItems: 'center',
-      width: '100%', height: '100vh',
-    }}>
-      <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
-        <label>Email</label>
-        <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
+    <div className='wrap'>
+      <div className='register'>
+        <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={onSubmitHandler}>
 
-        <label>Name</label>
-        <input type='text' value={name} onChange={(e)=>setName(e.target.value)} />
+          <div className='register_label'>
+            <label>Email</label>
+            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
 
-        <label>Password</label>
-        <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} />
-        
-        <label>Comfirm Password</label>
-        <input type='password' value={rePassword} onChange={(e)=>setRePassword(e.target.value)} />
+          <div className='register_label'>
+            <label>Name</label>
+            <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
 
-        <br />
-        <button type='submit'>
-          Register
-        </button>
-      </form>
+          <div className='register_label'>
+            <label>Password</label>
+            <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+
+          <div className='register_label'>
+            <label>Comfirm Password</label>
+            <input type='password' value={rePassword} onChange={(e) => setRePassword(e.target.value)} />
+          </div>
+
+          <button className='registerBtn' type='submit'>
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

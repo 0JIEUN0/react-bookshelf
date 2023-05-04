@@ -5,7 +5,7 @@ import axios from "axios";
 
 export default function BookMemo(props) {
     const { title, image, _id } = props.bookInfo;
-    const [memo, setMemo] = useState("");
+    const [memo, setMemo] = useState(props.bookInfo.content);
 
     const [modalOpen, setModalOpen] = useState(false);
 

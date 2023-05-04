@@ -52,7 +52,7 @@ function LoginPage() {
                 </form>
             </div>
 
-            <div className="register">
+            <div className="register_mv">
                 <a href="/register">💡 Register Now</a>
             </div>
         </div>
