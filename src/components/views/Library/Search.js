@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
-import axios from 'axios';
-import { parseString } from 'xml2js'
+import { useDispatch } from 'react-redux';
+import { searchBook } from '../../../_actions/book_action';
 import './App.css';
 import Book from "./Book";
 import Bookshelf from "./Bookshelf";
 
 function Search(props) {
+    const dispatch = useDispatch();
     const MAX = 5 // maximum size of each bookshelf
 
     const [query, setQuery] = useState("") // search query
@@ -16,38 +17,18 @@ function Search(props) {
     const bookId = useRef(0) // id of results
 
     const searchQuery = async () => {
-        // Naver API
-        const URL = '/v1/search/book.xml'
-        const SEARCH_KEY = {
-            'X-Naver-Client-Id': process.env.REACT_APP_NAVER_ID,
-            'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_SECRET,
-        }
-
         if (query !== "") {
-            await axios.get(URL, {
-                params: { query: query, display: 5 },
-                headers: SEARCH_KEY
-            }).then(function (response) {
-                // handle success
-                parseString(response.data,
-                    function (err, result) {
-                        if (result.rss.channel[0].total == 0) {
-                            setIsLoading(false)
-                            setMessage("No results.")
-                        }
-                        else {
-                            setBooks(result.rss.channel[0].item)
-                            setIsLoading(true)
-                            setMessage("")
-                        }
+            dispatch(searchBook(query))
+                .then(response => {
+                    console.log(response)
+                    if (response.payload.success) {
+                        setBooks(response.payload.books);
+                        setIsLoading(true)
+                    } else {
+                        setMessage(response.payload.message);
+                        setIsLoading(false)
                     }
-                );
-            }).catch(function (error) {
-                //handle error
-                setIsLoading(false)
-                setMessage("API Error")
-                console.log(error.config);
-            });
+                })
         }
     }
 
